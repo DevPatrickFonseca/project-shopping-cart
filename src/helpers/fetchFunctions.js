@@ -1,5 +1,4 @@
 export const fetchProduct = async (produto) => {
-  // seu código aqui
   const urlApiId = `https://api.mercadolibre.com/items/${produto}`;
 
   if (produto === undefined) throw new Error('ID não informado');
@@ -14,7 +13,6 @@ export const fetchProduct = async (produto) => {
 };
 
 export const fetchProductsList = async (produto) => {
-  // seu código aqui
   const urlApi = `https://api.mercadolibre.com/sites/MLB/search?q=${produto}`;
 
   if (!produto) throw new Error('Termo de busca não informado');
