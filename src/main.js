@@ -29,4 +29,9 @@ const dataStoreProducts = async () => { // Requisito 03
   });
 };
 
-dataStoreProducts();
+try { // Requisito 05
+  await dataStoreProducts();
+} catch (error) {
+  const errorMsg = 'Algum erro ocorreu, recarregue a página e tente novamente';
+  product.appendChild(createCustomElement('p', 'error', errorMsg));
+}
