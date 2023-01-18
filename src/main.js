@@ -2,11 +2,9 @@ import { searchCep } from './helpers/cepFunctions';
 import './style.css';
 import { fetchProductsList } from './helpers/fetchFunctions';
 import {
-  // createProductImageElement,
   createCustomElement,
   createProductElement,
-  // getIdFromProduct,
-  // createCartProductElement,
+  loadCartAdd,
 } from './helpers/shopFunctions';
 
 const product = document.querySelector('.products');
@@ -35,3 +33,5 @@ try { // Requisito 05
   const errorMsg = 'Algum erro ocorreu, recarregue a página e tente novamente';
   product.appendChild(createCustomElement('p', 'error', errorMsg));
 }
+
+loadCartAdd(); // Requisito 09

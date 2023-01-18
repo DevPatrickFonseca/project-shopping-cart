@@ -1,4 +1,4 @@
-import { removeCartID, saveCartID } from './cartFunctions';
+import { getSavedCartIDs, removeCartID, saveCartID } from './cartFunctions';
 import { fetchProduct } from './fetchFunctions';
 
 // Esses comentários que estão antes de cada uma das funções são chamados de JSdoc,
@@ -99,6 +99,15 @@ const dataCartAdd = async (IdProduct) => {
   const cartCreatElement = createCartProductElement(cartProductInfo);
 
   cartStoreProducts.appendChild(cartCreatElement);
+};
+
+// Requisito 09
+export const loadCartAdd = () => {
+  let lastCart = localStorage.cartProducts;
+  if (lastCart === undefined) lastCart = '[]';
+
+  const loadSavedCartProducts = getSavedCartIDs();
+  loadSavedCartProducts.forEach(dataCartAdd);
 };
 
 /**
