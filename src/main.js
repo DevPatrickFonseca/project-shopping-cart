@@ -5,6 +5,7 @@ import {
   createCustomElement,
   createProductElement,
   loadCartAdd,
+  cartTotalPrice,
 } from './helpers/shopFunctions';
 
 const product = document.querySelector('.products');
@@ -29,9 +30,10 @@ const dataStoreProducts = async () => { // Requisito 03
 
 try { // Requisito 05
   await dataStoreProducts();
+  loadCartAdd(); // Requisito 09
 } catch (error) {
   const errorMsg = 'Algum erro ocorreu, recarregue a página e tente novamente';
   product.appendChild(createCustomElement('p', 'error', errorMsg));
 }
 
-loadCartAdd(); // Requisito 09
+cartTotalPrice(); // Requisito 10

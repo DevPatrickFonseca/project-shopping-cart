@@ -51,6 +51,19 @@ const removeCartProduct = (li, id) => {
   removeCartID(id);
 };
 
+// Requisito 10
+export const cartTotalPrice = () => {
+  const priceProductsTotal = document
+    .querySelector('.total-price');
+  const priceProductValue = document
+    .querySelectorAll('.cart__products .product__price__value');
+
+  priceProductsTotal.innerText = Array
+    .from(priceProductValue)
+    .reduce((acc, actualValue) => acc + parseFloat(actualValue.innerText), 0)
+    .toFixed(2);
+};
+
 /**
  * Função responsável por criar e retornar um product do carrinho.
  * @param {Object} product - Objeto do produto.
@@ -88,7 +101,11 @@ export const createCartProductElement = ({ id, title, price, pictures }) => {
   );
   li.appendChild(removeButton);
 
-  li.addEventListener('click', () => removeCartProduct(li, id));
+  li.addEventListener('click', () => {
+    removeCartProduct(li, id);
+
+    cartTotalPrice(); // Requisito 10
+  });
   return li;
 };
 
@@ -99,6 +116,7 @@ const dataCartAdd = async (IdProduct) => {
   const cartCreatElement = createCartProductElement(cartProductInfo);
 
   cartStoreProducts.appendChild(cartCreatElement);
+  cartTotalPrice();
 };
 
 // Requisito 09
